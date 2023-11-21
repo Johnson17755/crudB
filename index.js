@@ -93,6 +93,6 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`server ise running on ...${PORT}`);
+app.listen(port, () => {
+  console.log(`server ise running on ...${port}`);
 });
