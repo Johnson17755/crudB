@@ -1,14 +1,15 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const app = express();
-const PORT = 5000;
+const port = process.env.PORT || 3030;
 const cors = require("cors");
+const DbURI = process.env.DbURI;
 
 app.use(cors());
 app.use(express.json());
 // db connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/mernstack_crud")
+  .connect(DbURI)
   .then(() => {
     console.log("db connection succesfully");
   })
