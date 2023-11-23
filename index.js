@@ -3,7 +3,7 @@ const { default: mongoose } = require("mongoose");
 const app = express();
 const port = process.env.PORT || 3030;
 const cors = require("cors");
-const DbURI = process.env.DbURI;
+const DbURI = process.env.DbURI || "mongodb+srv://Johnson:John00@cluster0.pxjfsev.mongodb.net/?retryWrites=true&w=majority";
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +16,7 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
 
 //user schema
 const userSchema = new mongoose.Schema(
@@ -44,6 +45,7 @@ app.post("/createuser", async (req, res) => {
     const bodyData = req.body;
     const user = new User(bodyData);
     const userData = await user.save();
+    console.log(userData);
     res.send(userData);
   } catch (error) {
     res.send(error);
